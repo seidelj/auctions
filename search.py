@@ -17,46 +17,61 @@ except ConfigParser.NoSectionError:
 	sys.exit("Improperly configured settings.ini file")
 
 
-from SearchClasses import GalleryList, RRAuction, GalleryListClassName, HugginsAndScott, HeritageAuctions
+from SearchClasses import GalleryList, RRAuction, GalleryListClassName, HugginsAndScott, HeritageAuctions, FuscoAuctions, SearchForId
 
 browser = webdriver.Firefox()
 browser.implicitly_wait(10)
 
-SEARCH_PHRASES = ['Cal Ripken', '1982 Fleer card #176 ', 'PSA 10']
+#SEARCH_PHRASES = ['Cal Ripken', '1982 Fleer card #176 ', 'PSA 10']
 
 SEARCH_PHRASE = "Cal Ripken 1982 Fleer PSA 10 card #176"
+#SEARCH_PHRASE = "Baseball"
 
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 RESULTS_DIR = os.path.join(PROJECT_DIR, 'results')
 
-email = []
+emailBody = []
 
 
 
 def main():
-	for website in WEBSITES[23:]:
+	for website in WEBSITES:
 		get_search_page(website)
-	print email
+	send_mail(emailBody)
 
 def send_mail(email):
 	server.ehlo()
 	server.starttls()
 
 	server.login(EMAIL, PASSWD)
-	
+
+	body = ""
+	for item in email:
+		body += item['name'] + "\n" + item['url'] + "\n"	
+
 	msg = "\r\n".join([
-		"From: AuctionMonitor",
+		"From: seidel.jp@gmail.com",
 		"To: jlist@uchicago.edu",
 		"Subject: Cal Ripken Card Alert",
 		"",
-		"{}".format(email),
+		"{}".format(body),
 		])
- 
+	successmsg = "\r\n".join([
+		"From: joseph.p.seidel@gmail.com",
+		"To: seidel.jp@gmail.com",
+		"Subject: Auction Monitor",
+		"",
+		"Auction monitor run successful",
+		])
 
+	if len(email > 0):
+		server.sendmail(EMAIL, ['jlist@uchicago.edu', 'seidel.jp@gmail.com'], msg) 
+	server.sendmail(EMAIL, "seidel.jp@gmail.com", successmsg)
 def get_auction_link(browser, website):
 	browser.get(website['url'])
 	link = browser.find_element_by_id("af_sessionList").find_elements_by_tag_name("a")[0]
 	link = link.get_attribute('href')
+	print link
 	return link
 
 def get_search_page(website):
@@ -103,7 +118,7 @@ def search_for_card(website, browser):
 	classname = website['class']
 	searchClass = globals()[classname](website, browser)
 	if searchClass.search_website():
-		email.append(website)
+		emailBody.append(website)
 
 if __name__ == "__main__":
 	main()

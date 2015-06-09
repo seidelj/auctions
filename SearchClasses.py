@@ -14,6 +14,37 @@ class GalleryList:
 		else:
 			return False
 
+class SearchForId:
+	
+	def __init__(self, siteDict, browser):
+		self.siteDict = siteDict
+		self.browser = browser
+
+	def search_website(self):
+		try:
+			results = self.browser.find_element_by_id(self.siteDict['results_id'])
+		except NoSuchElementException:
+			return False
+		else:
+			return True
+
+class FuscoAuctions:
+	
+	def __init__(self, siteDict, browser):
+		self.siteDict = siteDict
+		self.browser = browser
+
+	def search_website(self):
+		try:
+			noresult = self.browser.find_element_by_class_name(self.siteDict['noResultsClass'])
+		except NoSuchElementException:
+			result = True
+		else:
+			result = False
+
+		return result
+
+
 class RRAuction:
 
 	def __init__(self, siteDict, browser):

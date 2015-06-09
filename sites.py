@@ -41,7 +41,7 @@ sites.append({
 	"element": "id",
 	"searchbox": "searchTextBox",
 	"results_container": "galleryList",
-	"resultsTagName": "ul",
+	"resultsTagName": "li",
 	"class": "GalleryList",
 })
 
@@ -62,6 +62,9 @@ sites.append({
 	"url": "http://www.collectauctions.com/catalog.aspx",
 	"element": "id",
 	"searchbox": "searchTextBox",
+	"altMethod": "searchBy",
+	"altId": "searchByDropDown",
+	"altKeys": "t",
 	"results_container": "galleryList",
 	"resultsTagName": "li",
 	"class": "GalleryList",
@@ -77,8 +80,9 @@ sites.append({
 	"searchbox": "af_searchField",
 	"results_container": "af_sessionList",
 	"resultsTagName": "li",
+	"noResultsClass": "norecords",
 	"getUrl": True,
-	"class": "GalleryList",
+	"class": "FuscoAuctions",
 })
 
 
@@ -135,7 +139,7 @@ sites.append({
 	"element": "id",
 	"searchbox": "text-search",
 	"results_container": "batchBids",
-	"resultsClassName": "Current_Auctions",
+	"resultsClassName": "lotname",
 	"class" : "HeritageAuctions",
 })
 
@@ -145,7 +149,7 @@ sites.append({
 	"url": "http://www.hugginsandscott.com",
 	"element": "name",
 	"searchbox": "search",
-	"resultsClassName": "da_textb",
+	"resultsClassName": "da_ltexta",
 	"class": "HugginsAndScott",
 })
 
@@ -215,7 +219,6 @@ sites.append({
 	"resultsTagName": "li",
 	"class": "GalleryList",
 	"submit": "searchButton",
-
 })
 
 #GalleryList
@@ -228,8 +231,9 @@ sites.append({
 	"altId": "ctl00_pnlSidebar_i1_i0_lstSearch_Input",
 	"altKeys": "t",
 	"results_container": "ctl00_ContentPlaceHolder1_RadAjaxPanel1",
+	"results_id": "ctl00_ContentPlaceHolder1_grdLots_ctrl0_lbltitle",
 	"resultsTagName": "div",
-	"class": "GalleryList"
+	"class": "SearchForId"
 })
 
 #GalleryList
@@ -310,8 +314,8 @@ sites.append({
 	"url": "http://catalog.scpauctions.com/Category/Featured_Items-406.html",
 	"element": "id",
 	"searchbox": "searchTextBox",
-	"altMethod": "searchByDropDown",
-	"altId": "ctl00$ContentPlaceHolder$searchByDropDown",
+	"altMethod": "searchBy",
+	"altId": "searchByDropDown",
 	"altKeys": "tt",
 	"results_container": "galleryList",
 	"resultsTagName": "li",
