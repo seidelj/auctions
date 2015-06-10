@@ -3,6 +3,11 @@ from selenium.webdriver.common.keys import Keys
 from sites import sites as WEBSITES
 import itertools, os, time, sys
 import ConfigParser
+from pyvirtualdisplay import Display
+
+display = Display(visible=0, size=(800,600))
+display.start()
+
 
 # EMAIL STUFF
 import smtplib
@@ -38,6 +43,8 @@ def main():
 	for website in WEBSITES:
 		get_search_page(website)
 	send_mail(emailBody)
+	browser.quit()
+	display.stop()
 
 def send_mail(email):
 	server.ehlo()
