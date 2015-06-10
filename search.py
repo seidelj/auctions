@@ -71,7 +71,7 @@ def send_mail(email):
 		"Auction monitor run successful",
 		])
 
-	if len(email > 0):
+	if len(email) > 0:
 		server.sendmail(EMAIL, ['jlist@uchicago.edu', 'seidel.jp@gmail.com'], msg) 
 	server.sendmail(EMAIL, "seidel.jp@gmail.com", successmsg)
 def get_auction_link(browser, website):
