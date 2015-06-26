@@ -42,7 +42,9 @@ sites.append({
 	"searchbox": "searchTextBox",
 	"results_container": "galleryList",
 	"resultsTagName": "li",
-	"class": "GalleryList",
+	"class": "BeckettAuctions",
+	"auctionId": "catalogAuctionLabel",
+	"noAuctionText": "No auctions currently in system",
 })
 
 #GalleryList

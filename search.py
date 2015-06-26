@@ -22,7 +22,7 @@ except ConfigParser.NoSectionError:
 	sys.exit("Improperly configured settings.ini file")
 
 
-from SearchClasses import GalleryList, RRAuction, GalleryListClassName, HugginsAndScott, HeritageAuctions, FuscoAuctions, SearchForId
+from SearchClasses import GalleryList, RRAuction, GalleryListClassName, HugginsAndScott, HeritageAuctions, FuscoAuctions, SearchForId, BeckettAuctions
 
 browser = webdriver.Firefox()
 browser.implicitly_wait(10)
@@ -74,18 +74,26 @@ def send_mail(email):
 	if len(email) > 0:
 		server.sendmail(EMAIL, ['jlist@uchicago.edu', 'seidel.jp@gmail.com'], msg) 
 	server.sendmail(EMAIL, "seidel.jp@gmail.com", successmsg)
+
 def get_auction_link(browser, website):
 	browser.get(website['url'])
-	link = browser.find_element_by_id("af_sessionList").find_elements_by_tag_name("a")[0]
-	link = link.get_attribute('href')
-	print link
+	try:
+		link = browser.find_element_by_id("af_sessionList").find_elements_by_tag_name("a")[0]
+	except  IndexError:
+		link = False
+	else:
+		link = link.get_attribute('href')
+		print link
 	return link
 
 def get_search_page(website):
 	if website['name'] == "Fusco Auctions":
 		url = get_auction_link(browser, website)
 		website['url'] = url
-	search_for_card(website, browser)
+		if url != False:
+			search_for_card(website, browser)
+	else:
+		search_for_card(website, browser)
 
 
 def handle_alt_method(website, browser):

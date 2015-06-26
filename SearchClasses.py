@@ -14,6 +14,23 @@ class GalleryList:
 		else:
 			return False
 
+
+class BeckettAuctions(GalleryList):
+	
+	def search_website(self):
+		auctionId = self.browser.find_element_by_id(self.siteDict['auctionId'])
+		if self.siteDict['noAuctionText'].upper() in auctionId.text:
+			print "No auctions currently in system"
+			return False
+		else:
+			results = self.browser.find_element_by_id(self.siteDict['results_container'])
+			results = results.find_elements_by_tag_name(self.siteDict['resultsTagName'])
+			if len(results) > 0:
+				return True
+			else:
+				return False
+
+
 class SearchForId:
 	
 	def __init__(self, siteDict, browser):
