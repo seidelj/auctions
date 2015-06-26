@@ -151,7 +151,7 @@ sites.append({
 	"url": "http://www.hugginsandscott.com",
 	"element": "name",
 	"searchbox": "search",
-	"resultsClassName": "da_ltexta",
+	"resultsClassName": "da_ltextb",
 	"class": "HugginsAndScott",
 })
 

@@ -133,6 +133,7 @@ def search_for_card(website, browser):
 	classname = website['class']
 	searchClass = globals()[classname](website, browser)
 	if searchClass.search_website():
+		print website['name']
 		emailBody.append(website)
 
 if __name__ == "__main__":
