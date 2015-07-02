@@ -1,3 +1,4 @@
+EXCLUSIONS = []
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from sites import sites as WEBSITES
@@ -41,7 +42,8 @@ emailBody = []
 
 def main():
 	for website in WEBSITES:
-		get_search_page(website)
+		if website['name'] not in EXCLUSIONS:
+			get_search_page(website)
 	send_mail(emailBody)
 	browser.quit()
 	display.stop()
