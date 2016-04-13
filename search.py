@@ -41,7 +41,9 @@ emailBody = []
 
 
 def main():
-	for website in WEBSITES:
+	for x in EXCLUSIONS:
+		print "Warning {} is being excluded from searh".format(x)
+	for website in WEBSITES[10:]:
 		if website['name'] not in EXCLUSIONS:
 			get_search_page(website)
 	send_mail(emailBody)
@@ -123,7 +125,7 @@ def search_for_card(website, browser):
 			url = website['url'] + SEARCH_PHRASE.replace(" ","+")
 	if url:
 		browser.get(url)
-		time.sleep(2)
+		time.sleep(3)
 	else:
 		search_box = get_search_box(website, browser)
 		search_box.send_keys(SEARCH_PHRASE)
@@ -131,7 +133,7 @@ def search_for_card(website, browser):
 			browser.find_element_by_id(website['submit']).click()
 		else:
 			search_box.send_keys(Keys.RETURN)
-		time.sleep(2)
+		time.sleep(3)
 	classname = website['class']
 	searchClass = globals()[classname](website, browser)
 	if searchClass.search_website():

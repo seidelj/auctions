@@ -125,7 +125,7 @@ sites.append({
 #GalleryList
 sites.append({
 	"name": "Grey Flannel Auctions",
-	"url": "http://catalog.greyflannelauctions.com/catalog.aspx?category=9",
+	"url": "http://greyflannelauctions.com/catalog.aspx?category=9",
 	"element": "id",
 	"searchbox": "searchTextBox",
 	"results_container": "galleryList",
@@ -203,7 +203,7 @@ sites.append({
 #GalleryList
 sites.append({
 	"name": "Love the game auctions",
-	"url": "https://loveofthegameauctions.com/catalog.aspx",
+	"url": "www.loveofthegameauctions.com/catalog.aspx",
 	"element": "id",
 	"searchbox": "searchTextBox",
 	"results_container": "galleryList",
@@ -214,7 +214,7 @@ sites.append({
 #GalleryList
 sites.append({
 	"name": "Mears online auctions",
-	"url": "https://www.mearsonlineauctions.com/catalog.aspx",
+	"url": "www.mearsonlineauctions.com/catalog.aspx",
 	"element": "id",
 	"searchbox": "searchTextBox",
 	"results_container": "galleryList",
@@ -383,7 +383,7 @@ sites.append({
 #GalleryList
 sites.append({
 	"name": "Treasure Tidbits",
-	"url": "https://www.treasuretidbitssportsauction.com/catalog.aspx",
+	"url": "http://www.treasuretidbitssportsauction.com/catalog.aspx",
 	"element": "id",
 	"searchbox": "searchTextBox",
 	"results_container": "galleryList",
@@ -394,12 +394,11 @@ sites.append({
 #GalleryList
 sites.append({
 	"name": "Wheatland Auction Services",
-	"url": "https://wheatlandauctionservices.hibid.com/auctions/Current?tab=2&group=0&q=",
-	"element": None,
-	"searchbox": None,
-	"altMethod": "getQuery",
-	"results_container": "divCatalogList",
-	"resultsTagName": "tr",
+	"url": "http://www.wheatlandauctionservices.com/catalog.aspx",
+	"element": 'id',
+	"searchbox": 'searchTextBox',
+	"results_container": "galleryList",
+	"resultsTagName": "li",
 	"class": "GalleryList",
 })
 
