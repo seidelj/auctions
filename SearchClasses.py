@@ -1,7 +1,22 @@
 from selenium.common.exceptions import NoSuchElementException, StaleElementReferenceException
 
+class MemoryLane:
+
+	def __init__(self, siteDict, browser):
+		self.siteDict = siteDict
+		self.browser = browser
+
+	def search_website(self):
+		results = self.browser.find_element_by_class_name(self.siteDict['results_container'])
+		results = results.find_elements_by_class_name(self.siteDict['resultsTagName'])
+		if len(results) > 0:
+			return True
+		else:
+			return False
+
+
 class GalleryList:
-	
+
 	def __init__(self, siteDict, browser):
 		self.siteDict = siteDict
 		self.browser = browser
@@ -16,7 +31,7 @@ class GalleryList:
 
 
 class BeckettAuctions(GalleryList):
-	
+
 	def search_website(self):
 		auctionId = self.browser.find_element_by_id(self.siteDict['auctionId'])
 		if self.siteDict['noAuctionText'].upper() in auctionId.text:
@@ -32,7 +47,7 @@ class BeckettAuctions(GalleryList):
 
 
 class SearchForId:
-	
+
 	def __init__(self, siteDict, browser):
 		self.siteDict = siteDict
 		self.browser = browser
@@ -46,7 +61,7 @@ class SearchForId:
 			return True
 
 class FuscoAuctions:
-	
+
 	def __init__(self, siteDict, browser):
 		self.siteDict = siteDict
 		self.browser = browser
@@ -75,7 +90,7 @@ class RRAuction:
 			quantity = results.find_element_by_tag_name(self.siteDict['resultsTagName'])
 		except StaleElementReferenceException:
 			return False
-		
+
 		else:
 			try:
 				q = int(quantity.text)
@@ -96,7 +111,7 @@ class GalleryListClassName:
 	def search_website(self):
 		results = self.browser.find_element_by_id(self.siteDict['results_container'])
 		results = results.find_elements_by_class_name(self.siteDict['resultsClassName'])
-	
+
 		if len(results) > 0:
 			return True
 		else:
@@ -118,7 +133,7 @@ class HugginsAndScott:
 
 
 class HeritageAuctions:
-	
+
 	def __init__(self, siteDict, browser):
 		self.siteDict = siteDict
 		self.browser = browser
@@ -135,6 +150,3 @@ class HeritageAuctions:
 				return True
 			else:
 				return False
-
- 
-

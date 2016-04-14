@@ -226,16 +226,13 @@ sites.append({
 #GalleryList
 sites.append({
 	"name": "Memory Lane Inc.",
-	"url": "http://www.memorylaneinc.com/site/gallery.aspx",
+	"url": "http://memorylaneinc.com/site/lots/gallery?searchin=titledescription&search=",
 	"element": "id",
 	"searchbox": "ctl00_pnlSidebar_i1_i0_txtSearch",
-	"altMethod": "searchBy",
-	"altId": "ctl00_pnlSidebar_i1_i0_lstSearch_Input",
-	"altKeys": "t",
-	"results_container": "ctl00_ContentPlaceHolder1_RadAjaxPanel1",
-	"results_id": "ctl00_ContentPlaceHolder1_grdLots_ctrl0_lbltitle",
-	"resultsTagName": "div",
-	"class": "SearchForId"
+	"altMethod": "getQuery",
+	"results_container": "col-md-9",
+	"resultsTagName": "item",
+	"class": "MemoryLane",
 })
 
 #GalleryList
@@ -266,14 +263,12 @@ sites.append({
 #HugginsAndScott
 sites.append({
 	"name": "Pristine Auctions",
-	"url": "https://pristineauction.com/default/index/search/?search_key=",
+	"url": "https://pristineauction.com/auction/index/search/?search=",
 	"element": None,
 	"searchbox": None,
 	"altMethod": "getQuery",
-	"results_element": "class",
-	"results_container": "productTable",
-	"resultsClassName": "productName",
-	"class": "HugginsAndScott" 
+	"resultsClassName": "product-list",
+	"class": "HugginsAndScott"
 })
 
 #HugginsAndScott
@@ -410,5 +405,5 @@ sites.append({
 	"searchbox": "searchTextBox",
 	"results_container": "imageTable",
 	"resultsClassName": "even",
-	"class": "GalleryListClassName" 
+	"class": "GalleryListClassName"
 })

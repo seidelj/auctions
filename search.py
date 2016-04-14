@@ -23,7 +23,7 @@ except ConfigParser.NoSectionError:
 	sys.exit("Improperly configured settings.ini file")
 
 
-from SearchClasses import GalleryList, RRAuction, GalleryListClassName, HugginsAndScott, HeritageAuctions, FuscoAuctions, SearchForId, BeckettAuctions
+from SearchClasses import GalleryList, RRAuction, GalleryListClassName, HugginsAndScott, HeritageAuctions, FuscoAuctions, SearchForId, BeckettAuctions, MemoryLane
 
 browser = webdriver.Firefox()
 browser.implicitly_wait(10)
@@ -43,7 +43,7 @@ emailBody = []
 def main():
 	for x in EXCLUSIONS:
 		print "Warning {} is being excluded from searh".format(x)
-	for website in WEBSITES[10:]:
+	for website in WEBSITES:
 		if website['name'] not in EXCLUSIONS:
 			get_search_page(website)
 	send_mail(emailBody)
@@ -58,7 +58,7 @@ def send_mail(email):
 
 	body = ""
 	for item in email:
-		body += item['name'] + "\n" + item['url'] + "\n"	
+		body += item['name'] + "\n" + item['url'] + "\n"
 
 	msg = "\r\n".join([
 		"From: seidel.jp@gmail.com",
@@ -76,7 +76,7 @@ def send_mail(email):
 		])
 
 	if len(email) > 0:
-		server.sendmail(EMAIL, ['jlist@uchicago.edu', 'seidel.jp@gmail.com'], msg) 
+		server.sendmail(EMAIL, ['jlist@uchicago.edu', 'seidel.jp@gmail.com'], msg)
 	server.sendmail(EMAIL, "seidel.jp@gmail.com", successmsg)
 
 def get_auction_link(browser, website):
@@ -142,9 +142,3 @@ def search_for_card(website, browser):
 
 if __name__ == "__main__":
 	main()
-
-
-
-
-	
-		
