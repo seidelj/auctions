@@ -285,12 +285,13 @@ sites.append({
 #GalleryList
 sites.append({
 	"name": "RMY Auctions",
-	"url": "http://www.rmyauctions.com/catalog.aspx",
-	"element": "id",
-	"searchbox": "query",
-	"results_container": "galleryList",
-	"resultsTagName": "li",
-	"class": "GalleryList",
+	"url": "http://rmyauctions.com/lots/gallery?searchin=titledescription&search=",
+	"element": None,
+	"searchbox": None,
+    "altMethod": "getQuery",
+	"results_container": "col-md-9",
+	"resultsTagName": "item",
+	"class": "MemoryLane",
 })
 
 #RRAuction

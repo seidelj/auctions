@@ -43,7 +43,7 @@ emailBody = []
 def main():
 	for x in EXCLUSIONS:
 		print "Warning {} is being excluded from searh".format(x)
-	for website in WEBSITES:
+        for website in WEBSITES:
 		if website['name'] not in EXCLUSIONS:
 			get_search_page(website)
 	send_mail(emailBody)
