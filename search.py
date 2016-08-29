@@ -1,4 +1,4 @@
-EXCLUSIONS = []
+EXCLUSIONS = ['Treasure Tidbits']
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from sites import sites as WEBSITES
@@ -23,7 +23,7 @@ except ConfigParser.NoSectionError:
 	sys.exit("Improperly configured settings.ini file")
 
 
-from SearchClasses import GalleryList, RRAuction, GalleryListClassName, HugginsAndScott, HeritageAuctions, FuscoAuctions, SearchForId, BeckettAuctions, MemoryLane
+from SearchClasses import GalleryList, RRAuction, GalleryListClassName, HugginsAndScott, HeritageAuctions, FuscoAuctions, SearchForId, BeckettAuctions, MemoryLane, RMYAuctions
 
 browser = webdriver.Firefox()
 browser.implicitly_wait(10)
@@ -44,9 +44,9 @@ def main():
 	for x in EXCLUSIONS:
 		print "Warning {} is being excluded from searh".format(x)
         for website in WEBSITES:
-		if website['name'] not in EXCLUSIONS:
+		if website['name']  not in EXCLUSIONS:
 			get_search_page(website)
-	send_mail(emailBody)
+#	send_mail(emailBody)
 	browser.quit()
 	display.stop()
 
@@ -82,7 +82,7 @@ def send_mail(email):
 def get_auction_link(browser, website):
 	browser.get(website['url'])
 	try:
-		link = browser.find_element_by_id("af_sessionList").find_elements_by_tag_name("a")[0]
+		link = browser.find_element_by_class_name("upcomingAuctionList").find_elements_by_tag_name("a")[0]
 	except  IndexError:
 		link = False
 	else:
@@ -91,13 +91,14 @@ def get_auction_link(browser, website):
 	return link
 
 def get_search_page(website):
-	if website['name'] == "Fusco Auctions":
-		url = get_auction_link(browser, website)
-		website['url'] = url
-		if url != False:
-			search_for_card(website, browser)
-	else:
-		search_for_card(website, browser)
+	print website['url']
+	#if website['name'] == "Fusco Auctions":
+	#	url = get_auction_link(browser, website)
+	#	website['url'] = url
+	#	if url != False:
+	#		search_for_card(website, browser)
+	#else:
+	search_for_card(website, browser)
 
 
 def handle_alt_method(website, browser):
@@ -125,7 +126,7 @@ def search_for_card(website, browser):
 			url = website['url'] + SEARCH_PHRASE.replace(" ","+")
 	if url:
 		browser.get(url)
-		time.sleep(3)
+		time.sleep(4)
 	else:
 		search_box = get_search_box(website, browser)
 		search_box.send_keys(SEARCH_PHRASE)
@@ -133,7 +134,7 @@ def search_for_card(website, browser):
 			browser.find_element_by_id(website['submit']).click()
 		else:
 			search_box.send_keys(Keys.RETURN)
-		time.sleep(3)
+		time.sleep(4)
 	classname = website['class']
 	searchClass = globals()[classname](website, browser)
 	if searchClass.search_website():

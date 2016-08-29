@@ -79,10 +79,10 @@ sites.append({
 	"name": "Fusco Auctions",
 	"url": "https://fusco.infinitebidding.com/?method=getUpcomingAuctions",
 	"element": "id",
-	"searchbox": "af_searchField",
-	"results_container": "af_sessionList",
-	"resultsTagName": "li",
-	"noResultsClass": "norecords",
+	"searchbox": "listingsSearch",
+	"results_container": "catologContainer",
+	"resultsClassName": "lotListItem",
+	"noResultsClass": "no-search-results",
 	"getUrl": True,
 	"class": "FuscoAuctions",
 })
@@ -291,7 +291,7 @@ sites.append({
     "altMethod": "getQuery",
 	"results_container": "col-md-9",
 	"resultsTagName": "item",
-	"class": "MemoryLane",
+	"class": "RMYAuctions",
 })
 
 #RRAuction
@@ -309,15 +309,13 @@ sites.append({
 #GalleryList
 sites.append({
 	"name": "SCP Auctions",
-	"url": "http://catalog.scpauctions.com/Category/Featured_Items-406.html",
-	"element": "id",
-	"searchbox": "searchTextBox",
-	"altMethod": "searchBy",
-	"altId": "searchByDropDown",
-	"altKeys": "tt",
-	"results_container": "galleryList",
-	"resultsTagName": "li",
-	"class": "GalleryList",
+	"url": "http://catalog.scpauctions.com/lots/gallery?seachin=titledescription&search=",
+	"element": None,
+	"searchbox": None,
+    "altMethod": "getQuery",
+	"results_container": "col-md-9",
+	"resultsTagName": "item",
+	"class": "MemoryLane",
 })
 
 #GalleryList

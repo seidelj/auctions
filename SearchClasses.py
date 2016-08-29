@@ -14,6 +14,17 @@ class MemoryLane:
 		else:
 			return False
 
+class RMYAuctions(MemoryLane):
+
+	def search_website(self):
+		results = self.browser.find_element_by_class_name(self.siteDict['results_container'])
+		results = results.find_elements_by_class_name(self.siteDict['resultsTagName'])
+		if len(results) > 0:
+			return True
+		else:
+			return False
+
+
 
 class GalleryList:
 
