@@ -98,17 +98,17 @@ class RRAuction:
 		results = self.browser.find_element_by_id(self.siteDict['results_id'])
 
 		try:
-			quantity = results.find_element_by_tag_name(self.siteDict['resultsTagName'])
+			results_list = results.find_element_by_tag_name(self.siteDict['resultsTagName'])
 		except StaleElementReferenceException:
 			return False
 
 		else:
 			try:
-				q = int(quantity.text)
+				q = int(results_list.text)
 			except ValueError:
 				return False
 			else:
-				if int(quantity.text) > 0:
+				if int(q) > 0:
 					return True
 				else:
 					return False

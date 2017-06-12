@@ -1,4 +1,4 @@
-EXCLUSIONS = ['Treasure Tidbits']
+EXCLUSIONS = ['Treasure Tidbits', "Sports World Auctions"]
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from sites import sites as WEBSITES
@@ -43,8 +43,9 @@ emailBody = []
 def main():
 	for x in EXCLUSIONS:
 		print "Warning {} is being excluded from searh".format(x)
-        for website in WEBSITES:
-		if website['name']  not in EXCLUSIONS:
+	for website in WEBSITES:
+		#if website['name'] == "RR Auctions":
+		if website['name']  not in EXCLUSIONS:	
 			get_search_page(website)
 #	send_mail(emailBody)
 	browser.quit()

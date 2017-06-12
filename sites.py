@@ -188,16 +188,16 @@ sites.append({
 	"class": "GalleryList",
 })
 
-#GalleryList
+#MemoryLane
 sites.append({
 	"name": "Lelands",
-	"url": "http://www.lelands.com/Home/SearchResult?Type=t&Description=",
+	"url": "http://www.lelands.com/lots/gallery?searchin=title&search=",
 	"element": None,
 	"searchbox": None,
 	"altMethod": "getQuery",
-	"results_container": "dvContent",
-	"resultsTagName": "td",
-	"class": "GalleryList",
+	"results_container": "col-md-9",
+	"resultsTagName": "item",
+	"class": "MemoryLane",
 })
 
 #GalleryList
@@ -302,6 +302,7 @@ sites.append({
 	"searchbox": None,
 	"altMethod": "getQuery",
 	"results_id": "LotSearchMsg",
+	"resultsClassName": "item-block",
 	"resultsTagName": "cfoutput",
 	"class": "RRAuction",
 })
